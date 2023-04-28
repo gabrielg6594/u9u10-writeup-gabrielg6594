@@ -48,9 +48,44 @@ public class cat
 
 In order to user certian varibles or constructors that are private tehy need to be connected to a public constructor that will make access inot it to get a answer from the input that was gotten. Otherwise there would be no access to those varibles and only the ones that are public.
 
+### Challanges
 
+One of the common challanges that I have faced when working with inheritance in Java is to ensure that the subclasses correctly inherit methods and properties of the parent class. In some cases, subclasses may unintentionally override or hide methods or properties of their parent classes, this leads to some unexpected behavior. For example, consider the following class hierarchy:
 
+```
+public class Vehicle {
+    public void start() {
+        System.out.println("The vehicle is starting.");
+    }
+}
+public class Car extends Vehicle {
+    public void start() {
+        System.out.println("The car is starting.");
+    }
+}
+```
 
+In the example above we can see that car starts its methods from the parent class, called Vehicle. However, the Car class overrides the start() method with its own implementation. This would be very problomatic as in the code elsewhere the program expects the Car class to behave like a Vehicle, but the overridden `start()` method bahaves a bit differently. To fix this you want to include `@Override` methods in the subclass.
+
+```
+public class Vehicle {
+    public void start() {
+        System.out.println("The vehicle is starting.");
+    }
+}
+public class Car extends Vehicle {
+    @Override
+    public void start() {
+        System.out.println("The car is starting.");
+    }
+}
+```
+
+In this modified version of the previous code, the Car class uses the `@Override` annotation/method to indicate that it is intentionally overriding the `start()` method from its parent class. This ensures that the method is properly overridden, and prevents unintentional method hiding or overriding. In conclusion the `@Overriding` method ensures that the subclasses correctly inherit methods and properties from their parent classes when needed and overrides when it is which is a very important aspect of Java.
+
+### Next Steps
+
+Now that I know how parent classes and subclasses work later on I would want to utilize them correctly and whenever possible in order to make things better and more efficient as well as not have any errors that would cause the entire code to collapse.
 
 
 
